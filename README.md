@@ -1,6 +1,14 @@
 docker-kafka
 ============
-A docker image for [Apache Kafka](https://kafka.apache.org/). Kafka needs to connect to Zookeeper to start so it is better started using docker-compose
+A docker image for [Apache Kafka](https://kafka.apache.org/). To build an image using this docker file, execute the following command
+
+    $ docker build -t lgslm/kafka .
+
+To run a container and log into it execute the command
+ 
+    $ docker run --rm -it --name kafka lgslm/kafka bash
+
+Kafka needs to connect to Zookeeper to start so it is better started using docker-compose
 
     $ docker-compose up
 
