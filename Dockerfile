@@ -11,13 +11,6 @@ FROM openjdk:8
 
 MAINTAINER Luigi Selmi <luigi@datiaperti.it>
 
-# Install Apache Kafka
-COPY kafka_2.13-2.7.0.tgz /usr/local/kafka_2.13-2.7.0.tgz
-WORKDIR /usr/local/
-RUN tar xvf kafka_2.13-2.7.0.tgz
-RUN rm kafka_2.13-2.7.0.tgz
-ENV KAFKA_HOME=/usr/local/kafka_2.13-2.7.0
-
 # Install  network tools (ifconfig, netstat, ping, ip)
 RUN apt-get update && \
     apt-get install -y net-tools && \
@@ -28,6 +21,13 @@ RUN apt-get update && \
 # Install vi for editing
 RUN apt-get update && \
     apt-get install -y vim
+
+# Install Apache Kafka
+COPY kafka_2.13-2.7.0.tgz /usr/local/kafka_2.13-2.7.0.tgz
+WORKDIR /usr/local/
+RUN tar xvf kafka_2.13-2.7.0.tgz
+RUN rm kafka_2.13-2.7.0.tgz
+ENV KAFKA_HOME=/usr/local/kafka_2.13-2.7.0
 
 # Create a simbolic link to Kafka
 RUN ln -s $KAFKA_HOME /kafka
