@@ -16,5 +16,10 @@ It is possible to check the Kafka container by opening a new shell and executing
 
     $ docker exec -it kafka bash
 
-In order to check whether Kafka is working properly you can create a topic, if not already available and write and read messages. Follow the instruction
+A docker network must be created before running the services so that other containers that use the services will be able to connect by using the 
+containers' names 
+
+    $ docker network create pilot-sc4-net
+
+In order to check whether Kafka is working properly you can create a topic, if not already available, and write and read messages. Follow the instruction
 in [Apache Kafka Quickstart](https://kafka.apache.org/quickstart). 
