@@ -9,7 +9,7 @@ if [[ -z "$INITIAL_TOPICS" ]] ;then
     echo $0 : no INITIAL_TOPICS
 else
     echo $0 : make topics INITIAL_TOPICS=$INITIAL_TOPICS
-    export MAKETOPIC_CMD="/app/bin/kafka-topics.sh \
+    export MAKETOPIC_CMD="/kafka/bin/kafka-topics.sh \
                     --zookeeper $ZOOKEEPER_SERVERS \
                     --create --partitions 1 --replication-factor 1 --topic"
     (
