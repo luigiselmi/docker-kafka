@@ -16,7 +16,7 @@ It is possible to check the Kafka container by opening a new shell and executing
 
     $ docker exec -it kafka bash
 
-A docker network must be created before running the services so that other containers in th esame network that use the services will be able to connect 
+A docker network must be created before running the services so that other containers in the same network that use the services will be able to connect 
 by using the services' host names 
 
     $ docker network create pilot-sc4-net
