@@ -10,6 +10,8 @@ services:
             - "2181"
         ports:
             - "2181:2181"
+        networks:
+          - pilot-sc4-net
     kafka:
         image: lgslm/kafka
         hostname: kafka
@@ -22,3 +24,9 @@ services:
             - zookeeper
         expose:
             - "9092"
+        networks:
+          - pilot-sc4-net
+
+networks:
+        pilot-sc4-net:
+            external: true
