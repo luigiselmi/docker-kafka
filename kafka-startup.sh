@@ -5,13 +5,13 @@ set -e
 echo `date` $0
 
 echo $0 
-if [[ -z "$INITIAL_TOPICS" ]] ;then
-    echo $0 : no INITIAL_TOPICS
+if [[ -z "$TOPIC" ]] ;then
+    echo $0 : no TOPIC
 else
-    echo $0 : make topics INITIAL_TOPICS=$INITIAL_TOPICS
+    echo $0 : make topics TOPIC=$TOPIC
     export MAKETOPIC_CMD="/kafka/bin/kafka-topics.sh \
                     --zookeeper $ZOOKEEPER_SERVERS \
-                    --create --partitions 1 --replication-factor 1 --topic"
+                    --create --partitions 1 --replication-factor 1 --topic" 
     (
         # await kafka server at localhost
         until nc -z localhost 9092 ;do
@@ -20,13 +20,13 @@ else
         done
         echo "localhost:9092 is available"
 
-        $MAKETOPIC_CMD taxi
+        $MAKETOPIC_CMD "$TOPIC"
         RC=$?
         if [[ $RC == 0 ]] ;then
-            touch /INITIAL_TOPICS_AVAILABLE
-            echo available: INITIAL_TOPICS=$INITIAL_TOPICS
+            touch /TOPIC_AVAILABLE
+            echo available: TOPIC=$TOPIC
         else
-            echo cannot create INITIAL_TOPICS: $INITIAL_TOPICS
+            echo cannot create TOPIC: $TOPIC
         fi
     ) &
 fi

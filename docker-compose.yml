@@ -1,7 +1,7 @@
 version: '3.2'
 services:
     zookeeper:
-        image: lgslm/zookeeper
+        image: lgslm/zookeeper:v1.0.0
         hostname: zookeeper
         container_name: zookeeper
         environment:
@@ -11,22 +11,22 @@ services:
         ports:
             - "2181:2181"
         networks:
-          - pilot-sc4-net
+          - kafka-clients-net
     kafka:
-        image: lgslm/kafka
+        image: lgslm/kafka:v1.0.0
         hostname: kafka
         container_name: kafka
         environment:
             - SERVICE_PRECONDITION=zookeeper:2181
             - ZOOKEEPER_SERVERS=zookeeper:2181
-            - INITIAL_TOPICS="taxi"
+            - TOPIC=taxi
         depends_on:
             - zookeeper
         expose:
             - "9092"
         networks:
-          - pilot-sc4-net
+          - kafka-clients-net
 
 networks:
-        pilot-sc4-net:
+        kafka-clients-net:
             external: true

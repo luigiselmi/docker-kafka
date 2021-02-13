@@ -1,11 +1,11 @@
 # Dockerfile for Apache kafka
 # To build an image using this docker file, execute the following command
 #
-# $ docker build -t lgslm/kafka .
+# $ docker build -t lgslm/kafka:v1.0.0 .
 #
 # To run a container and log into it execute the command
 # 
-# $ docker run --rm -it --name kafka lgslm/kafka bash
+# $ docker run --rm -it --name kafka lgslm/kafka:v1.0.0 bash
 #
 FROM openjdk:8
 
