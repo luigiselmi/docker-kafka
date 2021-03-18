@@ -1,6 +1,9 @@
 docker-kafka
 ============
-A docker image for [Apache Kafka](https://kafka.apache.org/). To build an image using this docker file, execute the following command
+A docker image for [Apache Kafka](https://kafka.apache.org/). 
+
+## standalone (one Zookeeper server and one Kafka broker)
+To build an image using this docker file, execute the following command
 
     $ docker build -t lgslm/kafka:v1.0.0 .
 
@@ -23,3 +26,8 @@ by using the services' host names
 
 In order to check whether Kafka is working properly you can create a topic, if not already available, and write and read messages. Follow the instruction
 in [Apache Kafka Quickstart](https://kafka.apache.org/quickstart). 
+
+## cluster (Zookeeper cluster)
+To run Kafka and connect the broker to a Zookeeper cluster use the following docker-compose file
+
+    $ docker stack deploy -c docker-compose-zk-cluster.yml zk-kafka-stack
