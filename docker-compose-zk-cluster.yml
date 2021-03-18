@@ -24,34 +24,34 @@ services:
     networks:
       - kafka-clients-net
 
-    zoo3:
-      image: zookeeper
-      restart: always
-      hostname: zoo3
-      ports:
-        - 2183:2181
-      environment:
-        ZOO_MY_ID: 3
-        ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
-      networks:
-        - kafka-clients-net
+  zoo3:
+    image: zookeeper
+    restart: always
+    hostname: zoo3
+    ports:
+      - 2183:2181
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+    networks:
+      - kafka-clients-net
     
-    kafka:
-      image: lgslm/kafka:v1.0.0
-      hostname: kafka
-      environment:
-        - SERVICE_PRECONDITION=zoo1:2181
-        - ZOOKEEPER_SERVERS=zoo1:2181
-        - TOPIC=taxi
-      depends_on:
-        - zoo1
-        - zoo2
-        - zoo3
-      expose:
-        - "9092"
-      networks:
-        - kafka-clients-net
+  kafka:
+    image: lgslm/kafka:v1.0.0
+    hostname: kafka
+    environment:
+      - SERVICE_PRECONDITION=zoo1:2181
+      - ZOOKEEPER_SERVERS=zoo1:2181
+      - TOPIC=taxi
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    expose:
+      - "9092"
+    networks:
+      - kafka-clients-net
 
 networks:
-      kafka-clients-net:
-        external: true
+  kafka-clients-net:
+    external: true
