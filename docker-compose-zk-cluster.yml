@@ -36,12 +36,12 @@ services:
     networks:
       - kafka-clients-net
     
-  kafka:
+  kafka1:
     image: lgslm/kafka:v1.0.0
-    hostname: kafka
+    hostname: kafka1
     environment:
-      - SERVICE_PRECONDITION=zoo1:2181
-      - ZOOKEEPER_SERVERS=zoo1:2181
+      - SERVICE_PRECONDITION=zoo3:2181
+      - ZOOKEEPER_SERVERS=zoo1:2181,zoo2:2181,zoo3:2181
       - TOPIC=taxi
     depends_on:
       - zoo1
