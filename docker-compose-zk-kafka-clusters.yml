@@ -35,9 +35,9 @@ services:
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
     networks:
       - kafka-clients-net
-    
+
   kafka1:
-    image: lgslm/kafka:v1.0.0
+    image: lgslm/kafka:v1.0.1
     hostname: kafka1
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
@@ -54,7 +54,7 @@ services:
       - kafka-clients-net
 
   kafka2:
-    image: lgslm/kafka:v1.0.0
+    image: lgslm/kafka:v1.0.1
     hostname: kafka2
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
@@ -69,7 +69,7 @@ services:
       - "9092"
     networks:
       - kafka-clients-net
-  
+
 networks:
   kafka-clients-net:
     external: true

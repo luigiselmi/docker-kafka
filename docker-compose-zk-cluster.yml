@@ -37,7 +37,7 @@ services:
       - kafka-clients-net
 
   kafka1:
-    image: lgslm/kafka:v1.0.0
+    image: lgslm/kafka:v1.0.1
     hostname: kafka1
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
