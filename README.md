@@ -27,7 +27,12 @@ by using the services' host names
 In order to check whether Kafka is working properly you can create a topic, if not already available, and write and read messages. Follow the instruction
 in [Apache Kafka Quickstart](https://kafka.apache.org/quickstart). 
 
-## cluster (Zookeeper cluster)
-To run Kafka and connect the broker to a Zookeeper cluster use the following docker-compose file
+## Zookeeper cluster
+A docker-compose file is available to run one Kafka broker connected to a cluster of three Zookeeper server containers
 
     $ docker stack deploy -c docker-compose-zk-cluster.yml zk-kafka-stack
+
+## Kafka cluster
+A docker-compose file is available to run two Kafka brokers connected to a cluster of three Zookeeper server containers
+
+    $ docker stack deploy -c docker-compose-zk-kafka-clusters.yml zk-kafka-stack
