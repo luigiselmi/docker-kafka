@@ -37,7 +37,7 @@ services:
       - kafka-clients-net
 
   kafka1:
-    image: lgslm/kafka:v1.0.1
+    image: lgslm/kafka:v1.0.2
     hostname: kafka1
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
@@ -56,7 +56,7 @@ services:
       - kafka-clients-net
 
   kafka2:
-    image: lgslm/kafka:v1.0.1
+    image: lgslm/kafka:v1.0.2
     hostname: kafka2
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
@@ -75,7 +75,7 @@ services:
       - kafka-clients-net
 
   kafka3:
-    image: lgslm/kafka:v1.0.1
+    image: lgslm/kafka:v1.0.2
     hostname: kafka3
     environment:
       - SERVICE_PRECONDITION=zoo3:2181
