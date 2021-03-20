@@ -44,6 +44,8 @@ services:
       - ZOOKEEPER_SERVERS=zoo1:2181,zoo2:2181,zoo3:2181
       - BROKER_ID=1
       - TOPIC=taxi
+      - TOPIC_PARTITIONS=1
+      - TOPIC_REPLICAS=3
     depends_on:
       - zoo1
       - zoo2
@@ -61,6 +63,27 @@ services:
       - ZOOKEEPER_SERVERS=zoo1:2181,zoo2:2181,zoo3:2181
       - BROKER_ID=2
       - TOPIC=taxi
+      - TOPIC_PARTITIONS=1
+      - TOPIC_REPLICAS=3
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    expose:
+      - "9092"
+    networks:
+      - kafka-clients-net
+
+  kafka3:
+    image: lgslm/kafka:v1.0.1
+    hostname: kafka3
+    environment:
+      - SERVICE_PRECONDITION=zoo3:2181
+      - ZOOKEEPER_SERVERS=zoo1:2181,zoo2:2181,zoo3:2181
+      - BROKER_ID=3
+      - TOPIC=taxi
+      - TOPIC_PARTITIONS=1
+      - TOPIC_REPLICAS=3
     depends_on:
       - zoo1
       - zoo2

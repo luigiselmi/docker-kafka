@@ -11,7 +11,7 @@ else
     echo $0 : make topics TOPIC=$TOPIC
     export MAKETOPIC_CMD="/kafka/bin/kafka-topics.sh \
                     --zookeeper $ZOOKEEPER_SERVERS \
-                    --create --partitions 1 --replication-factor 1 --topic"
+                    --create --partitions $TOPIC_PARTITIONS --replication-factor $TOPIC_REPLICAS --topic"
     (
         # await kafka server at localhost
         until nc -z localhost 9092 ;do
