@@ -33,6 +33,6 @@ A docker-compose file is available to run one Kafka broker connected to a cluste
     $ docker stack deploy -c docker-compose-zk-cluster.yml zk-kafka-stack
 
 ## Kafka cluster
-A docker-compose file is available to run two Kafka brokers connected to a cluster of three Zookeeper server containers
+A docker-compose file is available to run three Kafka brokers connected to a cluster of three Zookeeper server containers
 
     $ docker stack deploy -c docker-compose-zk-kafka-clusters.yml zk-kafka-stack
